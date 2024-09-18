@@ -113,14 +113,9 @@ export class VSCodeKaotoEditorChannelApi extends DefaultVsCodeKieEditorChannelAp
       const targetFile = path.resolve(path.dirname(this.currentEditedDocument.uri.fsPath), relativePath);
       return new TextDecoder().decode(await vscode.workspace.fs.readFile(vscode.Uri.file(targetFile)));
     } catch (ex) {
-<<<<<<< Upstream, based on origin/main
       const errorMessage= `Cannot retrieve content of ${relativePath} relatively to ${this.currentEditedDocument.uri.fsPath}`;
       vscode.window.showErrorMessage(errorMessage);
       logInKaotoOutputChannel(errorMessage, ex);
-=======
-      vscode.window.showErrorMessage(`Cannot retrieve content of ${relativePath} relatively to ${this.currentEditedDocument.uri.fsPath}`);
-      // TODO log the exception somewhere
->>>>>>> 2f0512b WIP
       return undefined;
     }
   }
@@ -130,7 +125,6 @@ export class VSCodeKaotoEditorChannelApi extends DefaultVsCodeKieEditorChannelAp
       const targetFile = path.resolve(path.dirname(this.currentEditedDocument.uri.fsPath), relativePath);
       await vscode.workspace.fs.writeFile(vscode.Uri.file(targetFile), new TextEncoder().encode(content));
     } catch (ex) {
-<<<<<<< Upstream, based on origin/main
       const errorMessage = `Cannot write content of ${relativePath} relatively to ${this.currentEditedDocument.uri.fsPath}`;
       vscode.window.showErrorMessage(errorMessage);
       logInKaotoOutputChannel(errorMessage, ex);
@@ -171,10 +165,6 @@ export class VSCodeKaotoEditorChannelApi extends DefaultVsCodeKieEditorChannelAp
       const errorMessage = `Cannot get a user selection: ${ex.message}`;
       vscode.window.showErrorMessage(errorMessage);
       logInKaotoOutputChannel(errorMessage, ex);
-=======
-      vscode.window.showErrorMessage(`Cannot write content of ${relativePath} relatively to ${this.currentEditedDocument.uri.fsPath}`);
-      // TODO log the exception somewhere
->>>>>>> 2f0512b WIP
       return undefined;
     }
   }
